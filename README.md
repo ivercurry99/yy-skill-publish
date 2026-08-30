@@ -1,8 +1,8 @@
-﻿# skill-publish · 开源项目发布到 GitHub 一站式流水线
+# skill-publish · 把个人小项目发布到公开 GitHub 的 Checklist 与模板
 
-> 把「本地写完的 Skill / 小型开源项目」变成「GitHub 上能搜到、能看懂、愿意点开、愿意试用」的**标准 6 阶段流程**。
+> 一份我整理的逐步执行 Checklist 与 4 份 Markdown 模板，用于在本地项目开发完成后，发布到公开 GitHub。
 >
-> 从法律合规 → About 栏包装 → README 视觉优化 → Release 发版 → 推广物料生成 → Skill 自身打包发布，按顺序走一遍即可。
+> 内容覆盖商标与许可证自查、About 栏与 Topics 的写法、README 的改写方式、v1.0.0 版本的发布，以及各平台分享帖的起草；按顺序处理即可。
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-win%20%7C%20mac%20%7C%20linux-lightgrey)
