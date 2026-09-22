@@ -1,42 +1,43 @@
-﻿---
+---
 name: "skill-publish"
-description: "将个人 Skill 或小型开源项目发布到公开 GitHub，一站式完成商标合规检查、仓库包装、README 美化、Release 发版、推广物料生成。写完项目后要公开上线时调用。"
+description: "把本地写完的 Skill 或小型开源项目发布到公开 GitHub：商标与许可证自查、About 栏与 Topics 填写、README 改写、版本发布、各平台分享帖草稿。产出可直接公开的仓库、一份定稿 README、一个正式 Release 和 3 篇分享帖。项目写完准备公开上线时调用；写代码、修 Bug、Code Review 属于其他技能范围，不触发本技能。"
 ---
 
-# skill-publish · 开源项目发布到 GitHub 一站式流水线
+# skill-publish
 
-一套把「本地写完的 Skill / 开源项目」变成「GitHub 上能搜到、能看懂、愿意点开看、愿意下载试用」的**标准操作流程**。全流程 6 个 Phase，按顺序执行即可。
+把本地项目发布到公开 GitHub 的操作流程，共 6 个阶段，按顺序执行。每个阶段有具体的检查项、命令和模板。
+
+## 什么时候用
+
+- 写完一个本地 Skill（知识管理工具、出图脚本、Agent 工作流等），准备公开到 GitHub
+- 给已有仓库重新填写 About 栏和 Topics，改写 README
+- 发布一个带版本号的 Release，并写好 Release Notes
+- 为项目起草掘金 / V2EX / 小红书 / 即刻等平台的分享帖
+
+写代码、修 Bug、Code Review 属于其他技能的范围。
 
 ---
 
-## 什么时候用（触发条件）
+## Phase 1 — 法律与合规自查
 
-- ✅ 你刚写完一个本地 Skill（例如知识管理工具、出图脚本、Agent 工作流），准备公开到 GitHub 时
-- ✅ 你想给已有仓库做一次"星增长体检"，重新包装 About / Topics / README 时
-- ✅ 你想发布一次带版本号的 Release，并配套写好 Release Notes 时
-- ✅ 你想同步生成 掘金 / V2EX / 小红书 / 即刻等平台的分享帖物料时
-- ❌ 不是写代码 / 修 Bug / 做 Code Review（那些走别的技能）
+发布后再处理侵权投诉，成本远高于现在，所以这一步放在最前面。
 
----
+### 1.1 商标与品牌词扫描
+检查 README.md、SKILL.md 和脚本文件中是否出现以下内容：
+- 不得把他人注册商标当作产品名：`ChatGPT`、`GPT-4`、`抖音`、`微信`、`App Store`、`YouTube`、`Google`、`Facebook` 等。需要提及这些产品时，用「兼容 OpenAI 系列大模型」「可调用 xx 平台接口」这类描述句式
+- 项目名后面不加 ® / ™，除非持有商标注册证
+- GitHub Logo、Octocat 不直接放进仓库作装饰；「GitHub」一词作为平台名称可以正常提及
+- API 厂商名称（Seedream、DALL·E 3、FLUX 等）作为服务名描述是正常用法；不把它们的 Logo 贴进 README 作装饰
+- README 截图中的字体使用开源可商用字体（思源黑体、Noto Sans 等），不用未授权的方正、汉仪、蒙纳字体
+- 示例图人像来源：自己拍摄，或 Unsplash / Pexels 授权内容；不从社交平台下载他人照片
+- 政治、色情、毒品、暴力、赌博、未成年人相关内容：发现即删除
 
-## Phase 1 — 法律合规体检（先做，不然后面改成本很高）
+### 1.2 LICENSE 文件
+开源项目必须有 LICENSE 文件。没有许可证时默认版权保留，多数用户和企业不会使用。
+- 默认推荐 MIT License
+- 首行必须严格是 `MIT License`；首行为空或写中文会导致 GitHub 识别不到许可证徽标
+- 使用官方 19 行英文版本，替换 `[年份]` 和 `[你的用户名]`：
 
-### 1.1 商标 & 品牌词扫描
-扫一遍 README.md / SKILL.md / 脚本文件里是否出现以下风险词：
-- **禁止当作产品名**的注册商标：`ChatGPT`、`GPT-4`、`抖音`、`微信`、`App Store`、`YouTube`、`Google`、`Facebook` 等
-  - ✅ 正确写法：用"兼容 OpenAI 系列大模型"、"可调用 xx 平台接口"这类描述句式，不要把品牌当产品名字段
-- **商标符号**：除非你真的持有注册证，否则自己的项目名后面**不要加 ® / ™**
-- **GitHub 相关标识**：GitHub Logo、Octocat 形象**禁止直接放进仓库作为装饰**（除非你拿到 GitHub 授权）；"GitHub"这四个字作为平台名称可以正常提及
-- **API 厂商名称**：写 "Seedream / DALL·E 3 / FLUX 等出图服务" 是正常描述用法；**不要把它们的 Logo 直接扒进 README 做装饰图**
-- **字体**：如果 README 里有演示截图，截图中的装饰字体必须是开源免费可商用字体（思源黑体 / Noto Sans / 站酷快乐体等），**不要用未授权的方正/汉仪/蒙纳字体**
-- **人像**：示例图里用的真人头像/照片必须是自己拍的、或 Unsplash / Pexels 授权 CC0；**禁止直接从社交平台扒别人的照片**
-- **敏感词**：政治/色情/毒品/暴力/赌博/未成年人相关 → 0 容忍，直接删除
-
-### 1.2 License 格式 & 选择合规
-开源项目**必须有 LICENSE 文件**，没有就默认"版权所有"，别人不敢用。
-- 默认推荐：**MIT License**（最宽松、星增长友好，企业和个人都敢用）
-- LICENSE 文件首行必须严格是 `MIT License`，**首行空着或写"MIT协议"中文会导致 GitHub 识别不到 License 徽标**
-- 标准 MIT 模板（复制替换掉 `[年份]` `[你的用户名]` 即可）：
   ```
   MIT License
 
@@ -60,209 +61,172 @@ description: "将个人 Skill 或小型开源项目发布到公开 GitHub，一�
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
   ```
-- 校验：`gh repo view <owner>/<repo> --json licenseInfo` 输出必须显示 `MIT`；否则修正 LICENSE 后重新 push
 
-### 1.3 敏感信息 & 隐私清理
-全局 grep 以下模式，发现就删除或改成占位符：
+- 校验：`gh repo view <owner>/<repo> --json licenseInfo` 输出显示 `MIT`；否则修正后重新推送
+
+### 1.3 敏感信息与隐私
+全局搜索以下模式，发现就删除或改为占位符：
 - 硬编码密钥：`ghp_`、`sk-`、`xoxb-`、`AKIA`、`Bearer ` 开头的长 token
-- 个人隐私：手机号、真实姓名非必要不放、邮箱、身份证、银行卡、具体住址
-- 内部链接：内网 `192.168.*` / `10.*`、带 internal 关键字的 URL、未公开私有仓库地址
-- 临时文件路径：用户本地目录 `C:\Users\xxx\` 这类绝对路径 → 改成通用示例 `$HOME/project`
+- 个人隐私：手机号、身份证、银行卡、具体住址；真实姓名和邮箱非必要不放
+- 内部链接：内网 `192.168.*` / `10.*`、带 internal 关键字的 URL、未公开的私有仓库地址
+- 本地绝对路径：`C:\Users\xxx\` 改为通用示例 `$HOME/project`
 
 ---
 
-## Phase 2 — GitHub 仓库包装（About 栏三件套）
+## Phase 2 — About 栏与 Topics
 
-### 2.1 Description 公式（直接套）
-> **英文一句话核心卖点 + 句号 + 中文补充说明**。长度 80–160 字符。
-- 开头 40 个字符最重要（手机端 GitHub App 搜索结果页只截断显示这么多）
-- 开头一定要含**搜索关键词**，别写"一个有用的小工具"这种空话
-- 示例：
-  - ❌ 坏："小红书作图工具，很好用，快来用"
-  - ✅ 好："Structured prompts + multi-model adapter for Xiaohongshu AI carousels. 8 style presets, 4 vendor fallback, stability first. 结构化 Prompt + 多模型适配器生成小红书图文素材，出图稳定优先"
+### 2.1 Description 写法
+英文一句话说明项目做什么 + 中文补充，总长 80–160 字符。开头 40 个字符内包含搜索关键词（GitHub App 搜索结果只显示这么多），不写「一个有用的小工具」这类空话。
 
-### 2.2 Website 字段（不要留空！）
-优先级：
-1. 项目真实 Demo URL / 线上作品地址 / 作者小红书主页
-2. 作者自己的 GitHub Profile：`https://github.com/<username>`
-3. **兜底**：填仓库自己的 URL（空着 = About 栏少一行信息 + 少一个点击入口）
+示例：
+- 不好：「小红书作图工具，很好用，快来用」
+- 好：「Generate Xiaohongshu-ready 3:4 images from short text. 8 built-in style presets. 依据简短文本生成小红书常用 3:4 图文，内置 8 套风格预设」
 
-### 2.3 Topics 组合公式（8–12 个）
-> **4 类搭配，缺一不可：大分类(3–4) + 业务场景(3–5) + 热门高频(2–3) + 小众 niche(1–2)**
+### 2.2 Website 字段
+优先级：项目 Demo 地址 → 作者主页（`https://github.com/<username>`）→ 仓库自身 URL。留空会少一个点击入口。
 
-- 字符规则：GitHub 官方只接受**小写字母 / 数字 / 单个连字符 `-`**；不能中文、不能大写、不能空格、不能以下划线或 `-` 开头结尾
-- 分类定义与示例：
-  | 类别 | 作用 | 示例 |
-  |------|------|------|
-  | 大分类技术栈 | 让用户搜"python"这类大类词能命中 | `python`, `javascript`, `typescript`, `rust`, `go`, `cli` |
-  | 业务场景 | 让用户搜"我做第二大脑能用什么"能命中 | `second-brain`, `knowledge-management`, `xiaohongshu`, `llm-agent`, `note-taking` |
-  | 热门高频 | GitHub 搜出来最多人用的 tag，带流量 | `prompt-engineering`, `stable-diffusion`, `agent-skill`, `workflow-automation`, `ai-coding-assistant` |
-  | 小众 niche | 精准人群、竞争少、转化高 | `para-method`, `zettelkasten`, `harness`, `scaffolding`, `pkm`, `seedream` |
-
-完整示例见 `templates/topics-formula.md`。
+### 2.3 Topics 组合
+8–12 个，按 4 类搭配：大分类技术栈 3–4 个 + 业务场景 3–5 个 + 热门高频 2–3 个 + 小众 1–2 个。字符规则：GitHub 只接受小写字母、数字、单个连字符；不能中文、大写、空格、下划线。完整示例见 `templates/topics-formula.md`。
 
 ---
 
-## Phase 3 — README 视觉美化（5 个标准模块）
+## Phase 3 — README 改写
 
-> 目标：**用户滚动到第一屏能在 3 秒内看懂"这是啥、我能用吗、怎么跑"**。
+目标：首屏说明项目是什么、给谁用、怎么跑起来；示例放在长解释前面；卖点只写真实存在的能力。
 
-### 3.1 Hero 首屏（必做）
+### 3.1 首屏结构
 ```
-# 项目名（<30 字，中英双语可选）
+# 项目名（30 字以内，中英双语可选）
 
-<项目 Hero 图 / 装饰 SVG —— 宽度铺满 900px>
+<项目 Hero 图 / 装饰 SVG，宽度约 900px>
 
-> Slogan 一句话（<50 字）
-> 例：3 分钟搭好结构化第二大脑知识库，0 配置 0 网络，100% 纯 Python 标准库。
+> 一句话说明项目做什么（50 字以内）
 
-核心特性 3–4 条 bullets：
-- ✨ 特性 1：具体写价值，不要写"功能丰富"
-- 🚀 特性 2：量化数字优先（3 min / 0 dependency / 4-tier fallback / 8 presets）
-- 🛡️ 特性 3：工程化或稳定卖点（自动降级 / 进度记忆 / 幂等安全）
+核心特性 3–4 条：写具体行为和数字（3 分钟、0 依赖、8 套预设），不写「功能丰富」
 ```
 
-### 3.2 Badge 三件套（必做）
-统一用 shields.io 风格，放在项目名下面一行：
+### 3.2 Badge
+放在项目名下方，用 shields.io：
 - `![License](https://img.shields.io/badge/license-MIT-green)`
 - `![Python](https://img.shields.io/badge/python-3.8%2B-blue)`
 - `![Platform](https://img.shields.io/badge/platform-win%20%7C%20mac%20%7C%20linux-lightgrey)`
-- 可选：`![CI](https://github.com/<owner>/<repo>/actions/workflows/ci.yml/badge.svg)`
+- 可选：CI 徽章 `https://github.com/<owner>/<repo>/actions/workflows/ci.yml/badge.svg`
 
-### 3.3 截图/演示区（必做）
-- 至少 1 张，放 Features 段最顶部；最好是 GIF 展示核心流程
-- ALT 文本写清楚：`![知识库4层流程图——从 Capture 到 Express 四个阶段流转]`
-- 如果暂时没图：**先用明确的占位注释 `<!-- TODO: 插入 XX 演示截图（建议：长宽 1600x900 png） -->`**，不要真的留空
+### 3.3 截图
+至少 1 张，放在特性说明前；最好用 GIF 展示核心流程。ALT 文本写清楚内容。暂时没有图时，用明确的占位注释 `<!-- TODO: 插入 XX 演示截图（建议 1600x900 png） -->`，不留空。
 
-### 3.4 安装 & 运行（必做）
-**3 行法，复制粘贴就能跑**：
+### 3.4 安装与运行
+3 行以内，复制即可执行：
 ```bash
-# 1. 克隆
 git clone https://github.com/<owner>/<repo>.git
 cd <repo>
-
-# 2. 运行（如果有依赖才加 pip install）
 python run.py
 
-# 3. 输出长这样（贴 5–10 行真实 stdout 示例）
+# 输出示例（贴 5–10 行真实 stdout）
 [Phase 1/4] Capture       ... OK → 3 files imported
 [Phase 2/4] Index         ... OK → 18 notes indexed
-...
-[DONE] 知识库构建完成，用时 2 min 34 s
+[DONE] 构建 完成，用时 2 min 34 s
 ```
 
-### 3.5 对比表 / 为什么又造轮子（强烈推荐）
-回答第一个访客的灵魂拷问"为什么我不用现成的 XX 非要用你这个"：
+### 3.5 对比表
+回答「为什么不用现成的 XX」：从配置成本、数据隐私、可定制性、价格等维度，对照手写方案和商业产品，只写能核实的差异。
 
-| 维度 | 本项目 | 手写笔记 / 传统脚手架 | 商业 SaaS |
-|------|--------|----------------------|-----------|
-| 配置成本 | 0 | 数天 | 数小时 |
-| 数据隐私 | 100% 本地文件 | 本地 | 上传到云端 |
-| 可定制 | 全开源可改 | 难改 | 黑盒 |
-| 价格 | 免费 | 免费 | 月/年订阅 |
+### 3.6 文风检查
+写完 README 后自查一遍，出现下列写法就修改：
+- 标题不用 emoji 开头：「## ✨ 核心能力」改为「## 核心能力」
+- 不用这些词：一站式、全流程闭环、赋能、三件套、灵魂拷问、铁律红线、颗粒度、抓手
+- 不做夸张表述：「访客 3 秒看不懂直接关掉」改写为「首屏说明项目用途」；「全部自动包圆」改为列出实际自动完成的事项
+- 不编造数据：没有实测依据，不写「效率提升 X%」「通过率 100%」
+- 少用连续排比句，改写为一句陈述或普通列表
+- 加粗只用于术语和命令；介绍事实用陈述句
 
 ---
 
-## Phase 4 — 语义化版本 Release 发布
+## Phase 4 — Release 发布
 
-### 4.1 版本号规则（SemVer）
-- 首次发布：**固定 `v1.0.0`**（0.x.x 给人的感觉"还在 alpha 不稳定"）
-- 后续：
-  - `PATCH  v1.0.1`：修 Bug，向后兼容
-  - `MINOR  v1.1.0`：新增功能，向后兼容
-  - `MAJOR  v2.0.0`：破坏性变更，升级会报错
+### 4.1 版本号（SemVer）
+- 首次发布用 v1.0.0；0.x.x 会被读者理解为不稳定版本
+- PATCH（v1.0.1）修 Bug，向后兼容；MINOR（v1.1.0）新增功能；MAJOR（v2.0.0）破坏性变更
 
-### 4.2 Release Notes 三段式模板
-详见 `templates/release-notes-template.md`。
-- **标题**：`vX.Y.Z：版本核心一句话卖点（<30 字）`
-- **正文**：核心特性 bullets → 快速启动 3 行 → 欢迎提 issue 邀请
-- **正式版**：不勾 Draft / 不勾 Pre-release / 勾 Set as latest release
+### 4.2 Release Notes
+见 `templates/release-notes-template.md`：标题写版本核心变化（30 字以内），正文为特性列表、快速启动命令、issue 邀请。不勾 Draft 和 Pre-release，勾选 latest。
 
 ### 4.3 发布命令
 ```bash
-# 写好 notes.md 后
 gh release create v1.0.0 --target main \
-  --title "v1.0.0：初次公开发布，核心特性上线" \
+  --title "v1.0.0：初次公开发布" \
   --notes-file release-notes.md \
   --latest
 ```
 
 ---
 
-## Phase 5 — 多平台推广物料生成
+## Phase 5 — 分享帖草稿
 
-### 5.1 目录结构（标准）
+### 5.1 目录结构
 ```
 tiezi/
 └── <项目名>/
-    ├── juejin.md      # 掘金：最完整 + 技术深度最强
-    ├── v2ex.md        # V2EX：精简版 + 程序员社区口吻
-    ├── jike.md        # 即刻：短平快 + 个人分享口吻
-    └── xiaohongshu.md # 小红书：如果是生活/创作/效率类内容才投
+    ├── juejin.md      # 掘金：内容最完整、技术细节最多
+    ├── v2ex.md        # V2EX：精简版、程序员社区口吻
+    ├── jike.md        # 即刻：短、个人分享口吻
+    └── xiaohongshu.md # 小红书：生活/创作/效率类内容才投
 ```
 
-### 5.2 选 3 个平台的策略
-- **技术 / AI Coding / Agent 类项目**：掘金 + V2EX + 即刻
-- **AI 出图 / 内容创作 / 知识管理类**：小红书 + 掘金 + V2EX
-- **CLI / 纯程序员工具**：掘金 + V2EX + 知乎（可选）
+### 5.2 平台选择
+- 技术 / AI 编程 / Agent 类项目：掘金 + V2EX + 即刻
+- AI 出图 / 内容创作 / 知识管理类：小红书 + 掘金 + V2EX
+- CLI / 纯程序员工具：掘金 + V2EX + 知乎（可选）
 
-### 5.3 分享帖结构铁律（违者重写）
-**a → b → c → d 四段，顺序不能乱**：
+### 5.3 帖子结构
+a → b → c → d 四段，顺序不变：
 
-> **a. 开篇：开发背景 / 现实痛点**（4–6 条具体、真实、读者能共鸣的痛点，不要空话）
+a. 开发背景与痛点（4–6 条，具体真实，读者能对照自己的经历）
 
-> **b. 核心功能介绍 + 2–3 截图占位**（每张占位写清楚「这张应该放什么内容 + 推荐尺寸」，不要只写个"放截图"）
+b. 核心功能介绍 + 2–3 个截图占位（每个占位写清楚放什么内容、建议尺寸）
 
-> **c. 实现过程里踩过的关键技术坑**（3–4 个，含：具体表现 → 根因 → 解决方法 → 思考启示）
+c. 实现过程中遇到的技术问题（3–4 个，按「表现 → 原因 → 解决方法 → 经验」写）
 
-> **d. 结尾**：项目已经开源 → 欢迎下载试用 → 欢迎提 issue 交流反馈 → 附上 GitHub 仓库链接
+d. 结尾：项目已开源，附仓库链接，邀请下载试用和提 issue
 
-### 5.4 铁律红线
-- ❌ 绝对禁止：「求 star」「帮点 star」「star 一下」「随手点 star」这类直白乞求（任何变体都不行，包括 emoji 暗示 🥺👉👈 也不行）
-- ❌ 禁止：广告口吻（"市面上最好的""秒杀竞品""全网首发"这类自吹词）
-- ✅ 正确语气：个人开发者真实踩坑分享，有缺点也可以坦白说"目前还没支持 XX，下一个 Release 补"
+### 5.4 语气要求
+- 不出现「求 star」「帮点 star」及任何变体，包括 emoji 暗示；出现就重写该段
+- 不用广告口吻：「市面上最好的」「秒杀竞品」「全网首发」
+- 用个人开发者分享的语气；没做的能力写「下一版本计划支持」，可以如实说明当前缺点
 
-详细 Markdown 模板见 `templates/share-post-template.md`。
+模板见 `templates/share-post-template.md`。
 
 ---
 
-## Phase 6 — Skill 项目自身打包 & 发布到 GitHub
+## Phase 6 — Skill 打包与自举发布
 
-### 6.1 Skill 格式必须合规
+### 6.1 格式要求
 - 标准目录：`.trae/skills/<skill-name>/`
-- 必须有：`SKILL.md`（frontmatter 含 `name` + `description`，description 必须同时写「做什么 + 什么时候调用」）
-- 可选子目录：
-  - `scripts/` Python/Bash 辅助脚本
-  - `templates/` Markdown / JSON / SVG 模板
-  - `assets/` 图片、图标、示例输出
+- SKILL.md frontmatter 含 `name` 和 `description`；description 写清做什么、什么时候调用、什么时候不触发
+- 可选子目录：`scripts/`（辅助脚本）、`templates/`（模板）、`assets/`（图片示例）
 
-### 6.2 SKILL.md 内容清理（敏感信息检查最后一次）
-- ❌ 不能包含：用户本地临时路径（`C:\Users\xxx\AppData\Local\Temp\...`）、真实 token、私有仓库 URL、项目临时进度
-- ✅ 必须全是：可复用的流程说明、触发条件、安全示例、占位符
+### 6.2 内容检查
+- 不包含本地临时路径、真实 token、私有仓库 URL、单次任务的进度记录
+- 只保留可复用的流程说明、触发条件、示例和占位符
 
-### 6.3 公开仓库必备文件
-推到 GitHub 之前，根目录必须补齐：
-- `LICENSE`（MIT，按 Phase 1.2）
-- `README.md`（中文，按 Phase 3 的 5 模块）
-- `.gitignore`（Python 项目必加 `__pycache__/ *.pyc .DS_Store` 等）
+### 6.3 仓库必备文件
+- `LICENSE`（按 Phase 1.2）
+- `README.md`：面向使用者，说明价值、安装、配置、兼容范围、数据边界；不复制 Agent 的内部执行步骤，按 Phase 3 的结构写
+- `.gitignore`（Python 项目加 `__pycache__/`、`*.pyc`、`.DS_Store`）
+- 安装说明同时给两个入口：把仓库地址发给 Agent 安装，以及 `npx skills add <owner>/<repo>`
 
-### 6.4 推送后「自举」执行
-Skill 项目本身推到 GitHub 之后，**立刻重新跑一遍本流程的 Phase 2 → Phase 4**：
-1. 改 Description / Website / Topics
-2. 检查 License 徽标显示
-3. 发 v1.0.0 Release
-
-→ 完成后这个 Skill 自己就是一个合格的"skill-publish 流程示范作品"。
+### 6.4 自举
+Skill 仓库推送到 GitHub 后，对本仓库执行一遍 Phase 2 → Phase 4：更新 Description、Website、Topics，确认许可证徽标显示正常，发布 v1.0.0。完成后这个仓库本身就是流程的示范。
 
 ---
 
-## 执行清单（调用方照跑）
+## 执行清单
 
-| 步骤 | 动作 | 输出物 | Done |
-|------|------|--------|:----:|
-| 1 | Phase 1 法律合规体检：商标 / LICENSE 格式 / 敏感词 / 隐私 | 一份 clean 的仓库 | ☐ |
-| 2 | Phase 2 About 三件套：Description 按公式写 + Website 填充 + Topics 8-12 个按公式组合 | About 栏更新完成 | ☐ |
-| 3 | Phase 3 README 视觉美化：Hero + Badge + Screenshot + Install 3 行 + 对比表 | README.md 定稿 | ☐ |
-| 4 | Phase 4 Release：语义化版本号 v1.0.0 + Release Notes 三段式发布 | GitHub Release 页 | ☐ |
-| 5 | Phase 5 推广物料：tiezi/<项目>/<平台>.md 生成 3 篇，严格 a-b-c-d 结构 | 3 篇 Markdown 帖 | ☐ |
-| 6 | 如果是 Skill → Phase 6 打包发布 + 自举执行一遍 2-4 步骤 | 公开仓库上线 | ☐ |
+| 步骤 | 动作 | 产出 | Done |
+|---|---|---|:---:|
+| 1 | Phase 1 自查：商标、LICENSE 格式、敏感信息 | 可公开的仓库 | ☐ |
+| 2 | Phase 2：Description、Website、Topics 8–12 个 | About 栏完整 | ☐ |
+| 3 | Phase 3：README 改写 + 文风检查 | README.md 定稿 | ☐ |
+| 4 | Phase 4：v1.0.0 Release + Notes | GitHub Release 页 | ☐ |
+| 5 | Phase 5：3 篇分享帖草稿 | tiezi/ 目录 | ☐ |
+| 6 | Skill 项目执行 Phase 6 自举 | 公开仓库上线 | ☐ |
