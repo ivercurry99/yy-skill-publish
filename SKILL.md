@@ -1,6 +1,6 @@
 ---
 name: "skill-publish"
-description: "把本地写完的 Skill 或小型开源项目发布到公开 GitHub：商标与许可证自查、About 栏与 Topics 填写、README 改写、版本发布、各平台分享帖草稿。产出可直接公开的仓库、一份定稿 README、一个正式 Release 和 3 篇分享帖。项目写完准备公开上线时调用；写代码、修 Bug、Code Review 属于其他技能范围，不触发本技能。"
+description: "把本地写完的 Skill 或小型开源项目发布到公开 GitHub：商标与许可证自查、About 栏与 Topics 填写、README 改写、版本发布、各平台分享帖草稿。产出可直接公开的仓库、一份定稿 README、一个正式 Release 和 3 篇分享帖。项目写完准备公开上线时使用；写代码、修 Bug、Code Review 不要用本技能处理，它们属于其他技能范围。"
 ---
 
 # skill-publish
@@ -69,7 +69,7 @@ description: "把本地写完的 Skill 或小型开源项目发布到公开 GitH
 - 硬编码密钥：`ghp_`、`sk-`、`xoxb-`、`AKIA`、`Bearer ` 开头的长 token
 - 个人隐私：手机号、身份证、银行卡、具体住址；真实姓名和邮箱非必要不放
 - 内部链接：内网 `192.168.*` / `10.*`、带 internal 关键字的 URL、未公开的私有仓库地址
-- 本地绝对路径：`C:\Users\xxx\` 改为通用示例 `$HOME/project`
+- 本地绝对路径：写死的用户主目录（`C:\Users\<用户名>\`、`/home/<用户名>/`）改为通用示例 `$HOME/project`
 
 ---
 
@@ -113,7 +113,7 @@ description: "把本地写完的 Skill 或小型开源项目发布到公开 GitH
 - 可选：CI 徽章 `https://github.com/<owner>/<repo>/actions/workflows/ci.yml/badge.svg`
 
 ### 3.3 截图
-至少 1 张，放在特性说明前；最好用 GIF 展示核心流程。ALT 文本写清楚内容。暂时没有图时，用明确的占位注释 `<!-- TODO: 插入 XX 演示截图（建议 1600x900 png） -->`，不留空。
+至少 1 张，放在特性说明前；最好用 GIF 展示核心流程。ALT 文本写清楚内容。暂时没有图时，用明确的占位注释 `<!-- 待插入：XX 演示截图（建议 1600x900 png） -->`，不留空。
 
 ### 3.4 安装与运行
 3 行以内，复制即可执行：
