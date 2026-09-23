@@ -78,9 +78,11 @@ skill-publish/
 3. 分享帖不出现「求 star」类表述，包括 emoji 暗示；出现就重写该段
 4. 首次 Release 用 v1.0.0，并勾选 latest
 
-## 兼容范围
+## 兼容范围与数据边界
 
-技能面向使用 `.trae/skills/` 目录结构的 AI 编程助手（TRAE 等）。SKILL.md 中的流程本身不依赖特定宿主，其他 Agent 可以直接读取 SKILL.md 按文档执行。流程中的发布命令依赖 GitHub CLI（`gh`），使用前需要 `gh auth login` 完成认证。
+技能面向使用 `.trae/skills/` 目录结构的 AI 编程助手（TRAE 等）。SKILL.md 中的流程本身不依赖特定宿主，其他 Agent 可以直接读取 SKILL.md 按文档执行。
+
+配置：技能本身不需要模型 API Key，也不读写本地私人数据；发布命令依赖 GitHub CLI（`gh`），使用前执行一次 `gh auth login` 完成认证，除此之外无需额外配置。
 
 ## 项目声明
 
