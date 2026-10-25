@@ -1,9 +1,9 @@
 ---
-name: "skill-publish"
+name: "yy-skill-publish"
 description: "把本地写完的 Skill 或小型开源项目发布到公开 GitHub：商标与许可证自查、About 栏与 Topics 填写、README 改写、版本发布、各平台分享帖草稿。产出可直接公开的仓库、一份定稿 README、一个正式 Release 和 3 篇分享帖。项目写完准备公开上线时使用；写代码、修 Bug、Code Review 不要用本技能处理，它们属于其他技能范围。"
 ---
 
-# skill-publish
+# yy-skill-publish
 
 把本地项目发布到公开 GitHub 的操作流程，共 6 个阶段，按顺序执行。每个阶段有具体的检查项、命令和模板。
 
@@ -112,8 +112,10 @@ description: "把本地写完的 Skill 或小型开源项目发布到公开 GitH
 - `![Platform](https://img.shields.io/badge/platform-win%20%7C%20mac%20%7C%20linux-lightgrey)`
 - 可选：CI 徽章 `https://github.com/<owner>/<repo>/actions/workflows/ci.yml/badge.svg`
 
-### 3.3 截图
+### 3.3 截图与示例
 至少 1 张，放在特性说明前；最好用 GIF 展示核心流程。ALT 文本写清楚内容。暂时没有图时，用明确的占位注释 `<!-- 待插入：XX 演示截图（建议 1600x900 png） -->`，不留空。
+
+工具类项目（出图、渲染、生成器）必须**用自己产出的真实结果**当示例，不用示意图或占位图：先跑一遍工具拿到真实产物，再挑 3–4 个代表性输出放进 README，并注明「以下示例由本工具生成」。这比任何文字介绍都有说服力。Hero 主图也用项目自身风格生成，不加 AI 生成容易写错的文字。
 
 ### 3.4 安装与运行
 3 行以内，复制即可执行：
