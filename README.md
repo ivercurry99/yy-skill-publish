@@ -1,4 +1,4 @@
-# skill-publish · 把个人小项目发布到公开 GitHub 的 Checklist 与模板
+# yy-skill-publish · 把个人小项目发布到公开 GitHub 的 Checklist 与模板
 
 > 一份我整理的逐步执行 Checklist 与 4 份 Markdown 模板，用于在本地项目开发完成后，发布到公开 GitHub。
 >
@@ -32,19 +32,19 @@
 方式 1：把仓库地址发给支持 Skill 的 Agent：
 
 ```text
-帮我安装 https://github.com/ivercurry99/skill-publish 这个 Skill。
+帮我安装 https://github.com/ivercurry99/yy-skill-publish 这个 Skill。
 ```
 
 方式 2：命令行安装：
 
 ```shell
-npx skills add ivercurry99/skill-publish
+npx skills add ivercurry99/yy-skill-publish
 ```
 
 方式 3：手动克隆到技能目录：
 
 ```shell
-git clone https://github.com/ivercurry99/skill-publish.git .trae/skills/skill-publish
+git clone https://github.com/ivercurry99/yy-skill-publish.git .trae/skills/yy-skill-publish
 ```
 
 ## 使用
@@ -52,7 +52,7 @@ git clone https://github.com/ivercurry99/skill-publish.git .trae/skills/skill-pu
 安装后，项目写完准备公开时对 Agent 说：
 
 ```text
-用 skill-publish 流程把这个项目发布到我的公开 GitHub。
+用 yy-skill-publish 流程把这个项目发布到我的公开 GitHub。
 ```
 
 Agent 会按 SKILL.md 的 6 个阶段逐项执行：合规自查 → About 栏与 Topics → README 改写 → Release → 分享帖 →（Skill 项目）自举发布。
@@ -60,7 +60,7 @@ Agent 会按 SKILL.md 的 6 个阶段逐项执行：合规自查 → About 栏�
 ## 目录结构
 
 ```text
-skill-publish/
+yy-skill-publish/
 ├── LICENSE                    MIT License
 ├── README.md                  本文件
 ├── SKILL.md                   技能主文件（6 个阶段全文）
